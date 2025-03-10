@@ -84,6 +84,18 @@ img {
     animation: fadeInUp 0.8s ease forwards;
 }
 
+/* Make the hero button styling more specific */
+.hero .btn-outline {
+    border: 2px solid white;
+    color: white;
+}
+
+.hero .btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    color: white;
+}
+
 .tagline {
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -232,6 +244,7 @@ nav.sticky {
     background-color: rgba(74, 111, 255, 0.95);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     animation: slideDown 0.3s forwards;
+    z-index: 1000; /* Ensure it's above everything */
 }
 
 @keyframes slideDown {

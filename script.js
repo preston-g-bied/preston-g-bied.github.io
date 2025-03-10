@@ -213,11 +213,21 @@ const initStickyNav = () => {
     const hero = document.querySelector('.hero');
     
     if (nav && hero) {
+        // Create a placeholder element
+        const navPlaceholder = document.createElement('div');
+        navPlaceholder.style.display = 'none';
+        navPlaceholder.style.height = nav.offsetHeight + 'px';
+        nav.parentNode.insertBefore(navPlaceholder, nav.nextSibling);
+        
+        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        
         window.addEventListener('scroll', () => {
-            if (window.scrollY > hero.offsetHeight) {
+            if (window.scrollY >= heroBottom - nav.offsetHeight) {
                 nav.classList.add('sticky');
+                navPlaceholder.style.display = 'block';
             } else {
                 nav.classList.remove('sticky');
+                navPlaceholder.style.display = 'none';
             }
         });
     }
