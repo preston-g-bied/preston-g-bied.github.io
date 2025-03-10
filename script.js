@@ -6,10 +6,12 @@ document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
         
-        window.scrollTo({
-            top: targetElement.offsetTop - 70, // Offset for header
-            behavior: 'smooth'
-        });
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 70, // Offset for header
+                behavior: 'smooth'
+            });
+        }
     });
 });
 
@@ -62,8 +64,10 @@ const animateSkillBars = () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const valueBar = entry.target.querySelector('.skill-value');
-                const dataValue = valueBar.getAttribute('data-value');
-                valueBar.style.width = dataValue + '%';
+                if (valueBar) {
+                    const dataValue = valueBar.getAttribute('data-value');
+                    valueBar.style.width = dataValue + '%';
+                }
                 observer.unobserve(entry.target);
             }
         });
@@ -77,18 +81,29 @@ const animateSkillBars = () => {
 // Typed.js effect for hero section
 const initTypeEffect = () => {
     if (document.querySelector('.typed-text')) {
-        const typed = new Typed('.typed-text', {
-            strings: [
-                'intelligent solutions',
-                'actionable insights',
-                'predictive models',
-                'innovative applications'
-            ],
-            typeSpeed: 50,
-            backSpeed: 30,
-            backDelay: 2000,
-            loop: true
-        });
+        try {
+            const typed = new Typed('.typed-text', {
+                strings: [
+                    'intelligent solutions',
+                    'actionable insights',
+                    'predictive models',
+                    'innovative applications'
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 2000,
+                loop: true,
+                onStringTyped: function() {
+                    // Force height recalculation to prevent layout issues
+                    const heroDesc = document.querySelector('.hero-description');
+                    if (heroDesc) {
+                        heroDesc.style.minHeight = '30px';
+                    }
+                }
+            });
+        } catch (error) {
+            console.error("Error initializing Typed.js:", error);
+        }
     }
 };
 
@@ -96,6 +111,10 @@ const initTypeEffect = () => {
 const initProjectFilters = () => {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
+    
+    if (filterButtons.length === 0 || projectCards.length === 0) {
+        return; // Exit if elements don't exist
+    }
     
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -107,23 +126,33 @@ const initProjectFilters = () => {
             
             const filter = button.getAttribute('data-filter');
             
-            // Filter projects
+            // Filter projects with a smoother animation
             projectCards.forEach(card => {
                 if (filter === 'all') {
                     card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
+                } else if (card.classList.contains(filter)) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 10);
                 } else {
-                    if (card.classList.contains(filter)) {
-                        card.style.display = 'block';
-                    } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
                         card.style.display = 'none';
-                    }
+                    }, 300);
                 }
             });
         });
     });
 };
 
-// Scroll to top button
+// Scroll to top button functionality
 const initScrollToTop = () => {
     const scrollTopBtn = document.querySelector('.scroll-top-btn');
     
@@ -143,35 +172,6 @@ const initScrollToTop = () => {
             });
         });
     }
-};
-
-// Add scroll to top button
-const addScrollTopButton = () => {
-    // Check if button already exists
-    if (!document.querySelector('.scroll-top-btn')) {
-        const scrollTopButton = document.createElement('button');
-        scrollTopButton.className = 'scroll-top-btn';
-        scrollTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        document.body.appendChild(scrollTopButton);
-    }
-    
-    // Add event listeners
-    const scrollTopBtn = document.querySelector('.scroll-top-btn');
-    
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            scrollTopBtn.classList.add('show');
-        } else {
-            scrollTopBtn.classList.remove('show');
-        }
-    });
-    
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
 };
 
 // Contact form handling
@@ -212,68 +212,82 @@ const initStickyNav = () => {
     const nav = document.querySelector('nav');
     const hero = document.querySelector('.hero');
     
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > hero.offsetHeight) {
-            nav.classList.add('sticky');
-        } else {
-            nav.classList.remove('sticky');
-        }
-    });
+    if (nav && hero) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > hero.offsetHeight) {
+                nav.classList.add('sticky');
+            } else {
+                nav.classList.remove('sticky');
+            }
+        });
+    }
+};
+
+// Error handling wrapper
+const safeExecute = (fn, name) => {
+    try {
+        fn();
+    } catch (error) {
+        console.error(`Error in ${name}:`, error);
+    }
 };
 
 // Initialize all functions when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    // Add 'animate-on-scroll' class to elements you want to animate
-    const elementsToAnimate = [
-        '.project-card',
-        '.skill-category',
-        '.timeline-item',
-        '.contact-item'
-    ];
-    
-    elementsToAnimate.forEach(selector => {
-        document.querySelectorAll(selector).forEach(el => {
-            el.classList.add('animate-on-scroll');
+    try {
+        // Add 'animate-on-scroll' class to elements you want to animate
+        const elementsToAnimate = [
+            '.project-card',
+            '.skill-category',
+            '.timeline-item',
+            '.contact-item'
+        ];
+        
+        elementsToAnimate.forEach(selector => {
+            document.querySelectorAll(selector).forEach(el => {
+                el.classList.add('animate-on-scroll');
+            });
         });
-    });
-    
-    // Initialize animations and interactive elements
-    animateOnScroll();
-    animateSkillBars();
-    initTypeEffect();
-    initProjectFilters();
-    initScrollToTop();
-    initContactForm();
-    initStickyNav();
-    addScrollTopButton();
-});
-
-// Handle project card hover animations more smoothly
-document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('mouseenter', () => {
-        const image = card.querySelector('.project-image img');
-        if (image) {
-            image.style.transform = 'scale(1.1)';
-        }
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        const image = card.querySelector('.project-image img');
-        if (image) {
-            image.style.transform = 'scale(1)';
-        }
-    });
-});
-
-// Handle skill tag hover effect for better user experience
-document.querySelectorAll('.skill-tags span').forEach(tag => {
-    tag.addEventListener('mouseenter', () => {
-        tag.style.transform = 'translateY(-3px)';
-        tag.style.boxShadow = '0 5px 15px rgba(74, 111, 255, 0.2)';
-    });
-    
-    tag.addEventListener('mouseleave', () => {
-        tag.style.transform = 'translateY(0)';
-        tag.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.05)';
-    });
+        
+        // Initialize animations and interactive elements with error handling
+        safeExecute(animateOnScroll, 'animateOnScroll');
+        safeExecute(animateSkillBars, 'animateSkillBars');
+        safeExecute(initTypeEffect, 'initTypeEffect');
+        safeExecute(initProjectFilters, 'initProjectFilters');
+        safeExecute(initScrollToTop, 'initScrollToTop');
+        safeExecute(initContactForm, 'initContactForm');
+        safeExecute(initStickyNav, 'initStickyNav');
+        
+        // Handle project card hover animations more smoothly
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const image = card.querySelector('.project-image img');
+                if (image) {
+                    image.style.transform = 'scale(1.1)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const image = card.querySelector('.project-image img');
+                if (image) {
+                    image.style.transform = 'scale(1)';
+                }
+            });
+        });
+        
+        // Handle skill tag hover effect
+        document.querySelectorAll('.skill-tags span').forEach(tag => {
+            tag.addEventListener('mouseenter', () => {
+                tag.style.transform = 'translateY(-3px)';
+                tag.style.boxShadow = '0 5px 15px rgba(74, 111, 255, 0.2)';
+            });
+            
+            tag.addEventListener('mouseleave', () => {
+                tag.style.transform = 'translateY(0)';
+                tag.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.05)';
+            });
+        });
+    } catch (error) {
+        console.error("Error in initialization:", error);
+    }
 });

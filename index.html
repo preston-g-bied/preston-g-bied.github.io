@@ -4,9 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preston Bied | Machine Learning Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=1.2">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <!-- Critical inline CSS to fix rendering issues -->
+    <style>
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, #4a6fff 0%, #6a11cb 100%);
+            color: white;
+            padding: 100px 0 120px;
+            overflow: visible;
+            height: auto;
+            max-height: 650px;
+            z-index: 1;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem !important;
+            margin-bottom: 30px !important;
+            overflow: visible !important;
+            white-space: nowrap !important;
+            min-height: 30px !important;
+        }
+        
+        .typed-text {
+            display: inline-block !important;
+            min-width: 240px !important;
+        }
+        
+        .section {
+            position: relative;
+            padding: 50px 0 !important;
+            z-index: 2;
+            background-color: #f4f7f9;
+        }
+        
+        #about.section {
+            margin-top: -40px !important;
+            padding-top: 40px !important;
+            position: relative;
+            z-index: 5;
+        }
+        
+        .scroll-top-btn {
+            position: fixed !important;
+            bottom: 30px !important;
+            right: 30px !important;
+            width: 45px !important;
+            height: 45px !important;
+            background-color: #4a6fff !important;
+            color: white !important;
+            border: none !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            font-size: 1.2rem !important;
+            cursor: pointer !important;
+            box-shadow: 0 4px 15px rgba(74, 111, 255, 0.3) !important;
+            z-index: 1000 !important;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .scroll-top-btn.show {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Enhanced Hero Section -->
@@ -494,6 +561,11 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- Back to top button -->
+    <button class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js?v=1.2"></script>
 </body>
 </html>

@@ -21,6 +21,8 @@ body {
     line-height: 1.6;
     color: #333;
     background-color: #f4f7f9;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    position: relative;
 }
 
 .container {
@@ -28,6 +30,7 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
 }
 
 a {
@@ -54,7 +57,10 @@ img {
     background: linear-gradient(135deg, #4a6fff 0%, #6a11cb 100%);
     color: white;
     padding: 100px 0 120px;
-    overflow: hidden;
+    overflow: visible;
+    height: auto;
+    max-height: 650px;
+    z-index: 1;
 }
 
 .hero-content {
@@ -62,11 +68,13 @@ img {
     align-items: center;
     justify-content: space-between;
     gap: 40px;
+    position: relative;
+    z-index: 5;
 }
 
 .hero-text {
     flex: 1;
-    z-index: 2;
+    z-index: 5;
 }
 
 .hero h1 {
@@ -87,20 +95,22 @@ img {
     font-size: 1.2rem;
     margin-bottom: 30px;
     animation: fadeInUp 0.8s 0.3s ease forwards;
-    max-width: 100%; /* Ensure text doesn't overflow */
-    overflow: hidden; /* Hide overflow */
+    max-width: 100%;
+    overflow: visible;
+    white-space: nowrap;
+    min-height: 30px;
 }
 
 .typed-text {
     display: inline-block;
-    min-width: 240px; /* Reserve space for the typing effect */
+    min-width: 240px;
 }
 
 .hero-cta {
     display: flex;
     gap: 15px;
     animation: fadeInUp 0.8s 0.4s ease forwards;
-    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    flex-wrap: wrap;
 }
 
 .btn-primary, .btn-outline {
@@ -110,7 +120,7 @@ img {
     transition: var(--transition);
     text-align: center;
     min-width: 150px;
-    margin-bottom: 10px; /* Add space between buttons if they wrap */
+    margin-bottom: 10px;
 }
 
 .btn-primary {
@@ -138,14 +148,14 @@ img {
     flex: 1;
     position: relative;
     height: 300px;
-    z-index: 1;
+    z-index: 4;
 }
 
 .hero-shape {
     position: absolute;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(0px); /* Remove the blur effect */
+    backdrop-filter: blur(0px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     animation: float 6s infinite ease-in-out;
@@ -181,7 +191,8 @@ img {
     left: 0;
     width: 100%;
     line-height: 0;
-    z-index: 2; /* Ensure it's above other elements */
+    z-index: 3;
+    overflow: hidden;
 }
 
 /* Navigation */
@@ -191,7 +202,7 @@ nav {
     position: absolute;
     bottom: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 10;
 }
 
 nav ul {
@@ -234,28 +245,34 @@ nav.sticky {
 
 /* Section styles */
 .section {
-    padding: 60px 0; /* Reduced from 80px to 60px */
+    position: relative;
+    padding: 50px 0;
+    z-index: 2;
+    background-color: #f4f7f9;
 }
 
 /* Add a negative margin to the first section to reduce space after hero */
 #about.section {
-    margin-top: -20px;
+    margin-top: -40px;
+    padding-top: 40px;
+    position: relative;
+    z-index: 5;
 }
 
 /* Adjust the specific sections spacing */
 #resume.section {
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 #projects.section {
-    padding-top: 40px;
+    padding-top: 30px;
 }
 
 /* Make section titles more compact */
 .section h2 {
-    margin-bottom: 30px; /* Reduced from 40px */
-    font-size: 2.2rem; /* Slightly smaller */
+    margin-bottom: 30px;
+    font-size: 2.2rem;
     text-align: center;
     color: var(--dark-color);
     position: relative;
@@ -323,12 +340,12 @@ nav.sticky {
 
 /* Resume Section Styles */
 .resume-container {
-    margin-top: 40px;
+    margin-top: 30px;
 }
 
 .resume-download {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 .btn-resume {
@@ -366,7 +383,7 @@ nav.sticky {
 .timeline-title {
     position: relative;
     color: var(--primary-color);
-    padding-left: 40px; /* Space for the icon */
+    padding-left: 40px;
     font-size: 1.6rem;
     display: flex;
     align-items: center;
@@ -386,7 +403,7 @@ nav.sticky {
 .timeline-item {
     position: relative;
     padding-left: 45px;
-    margin-bottom: 30px; /* Reduced from 40px */
+    margin-bottom: 30px;
 }
 
 .timeline-dot {
@@ -492,7 +509,7 @@ nav.sticky {
     transform: translateY(-2px);
 }
 
-/* Project cards that match image 3 */
+/* Project cards */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -677,7 +694,7 @@ nav.sticky {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 30px;
-    margin-bottom: 30px; /* Reduced from 40px */
+    margin-bottom: 30px;
 }
 
 .skill-category {
@@ -739,7 +756,7 @@ nav.sticky {
 
 .additional-skills {
     text-align: center;
-    margin-top: 30px; /* Reduced from 50px */
+    margin-top: 30px;
 }
 
 .additional-skills h3 {
@@ -781,7 +798,7 @@ nav.sticky {
 .contact-intro {
     text-align: center;
     max-width: 700px;
-    margin: 0 auto 40px;
+    margin: 0 auto 30px;
     font-size: 1.1rem;
 }
 
@@ -790,7 +807,7 @@ nav.sticky {
     flex-direction: column;
     gap: 20px;
     max-width: 500px;
-    margin: 0 auto 30px; /* Reduced from 50px */
+    margin: 0 auto 30px;
 }
 
 .contact-item {
@@ -884,7 +901,9 @@ nav.sticky {
 footer {
     background-color: var(--dark-color);
     color: white;
-    padding: 60px 0 20px;
+    padding: 40px 0 20px;
+    position: relative;
+    z-index: 10;
 }
 
 .footer-content {
@@ -995,7 +1014,7 @@ footer {
     box-shadow: 0 4px 15px rgba(74, 111, 255, 0.3);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s, visibility 0.3s;
     z-index: 1000;
 }
 
@@ -1084,7 +1103,7 @@ footer {
     }
     
     .section {
-        padding: 50px 0;
+        padding: 40px 0;
     }
     
     .section h2 {
@@ -1125,6 +1144,7 @@ footer {
     .hero-cta {
         flex-direction: column;
         gap: 10px;
+        align-items: center;
     }
     
     .filter-btn {
