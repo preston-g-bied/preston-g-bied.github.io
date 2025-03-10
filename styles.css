@@ -77,10 +77,10 @@ img {
     position: relative;
     background: linear-gradient(135deg, #4a6fff 0%, #6a11cb 100%);
     color: white;
-    padding: 100px 0 120px;
+    padding: 60px 0 120px !important; /* Reduced from 100px to 60px */
+    max-height: 550px !important; /* Reduced from 650px */
     overflow: visible;
     height: auto;
-    max-height: 650px;
     z-index: 10;
 }
 
@@ -91,6 +91,7 @@ img {
     gap: 40px;
     position: relative;
     z-index: 15;
+    margin-top: -20px;
 }
 
 .hero-text {
@@ -194,6 +195,7 @@ img {
     width: 100%;
     line-height: 0;
     z-index: 4;  
+    margin-bottom: -10px;
 }
 
 /* Section styles */
@@ -206,10 +208,21 @@ img {
 
 /* First section doesn't need negative margin without navbar */
 #about.section {
-    margin-top: -40px;
-    padding-top: 20px; /* Reduced from 80px to 20px */
+    margin-top: -60px !important; /* More negative margin to pull it up */
+    padding-top: 0 !important; /* Remove top padding completely */
     position: relative;
     z-index: 5;
+}
+
+#about.section::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 20px);
+    background-color: #f4f7f9;
+    z-index: -1;
 }
 
 #about.section h2 {
@@ -244,7 +257,7 @@ img {
     display: flex;
     align-items: center;
     gap: 40px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .about-image {
