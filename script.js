@@ -145,6 +145,35 @@ const initScrollToTop = () => {
     }
 };
 
+// Add scroll to top button
+const addScrollTopButton = () => {
+    // Check if button already exists
+    if (!document.querySelector('.scroll-top-btn')) {
+        const scrollTopButton = document.createElement('button');
+        scrollTopButton.className = 'scroll-top-btn';
+        scrollTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        document.body.appendChild(scrollTopButton);
+    }
+    
+    // Add event listeners
+    const scrollTopBtn = document.querySelector('.scroll-top-btn');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollTopBtn.classList.add('show');
+        } else {
+            scrollTopBtn.classList.remove('show');
+        }
+    });
+    
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+};
+
 // Contact form handling
 const initContactForm = () => {
     const contactForm = document.querySelector('.contact-form');
@@ -178,6 +207,20 @@ const initContactForm = () => {
     }
 };
 
+// Sticky navigation on scroll
+const initStickyNav = () => {
+    const nav = document.querySelector('nav');
+    const hero = document.querySelector('.hero');
+    
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > hero.offsetHeight) {
+            nav.classList.add('sticky');
+        } else {
+            nav.classList.remove('sticky');
+        }
+    });
+};
+
 // Initialize all functions when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     // Add 'animate-on-scroll' class to elements you want to animate
@@ -201,17 +244,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initProjectFilters();
     initScrollToTop();
     initContactForm();
-    
-    // Add scroll to top button to the DOM if it doesn't exist
-    if (!document.querySelector('.scroll-top-btn')) {
-        const scrollTopButton = document.createElement('button');
-        scrollTopButton.className = 'scroll-top-btn';
-        scrollTopButton.innerHTML = '<i class="fas fa-arrow-up"></i>';
-        document.body.appendChild(scrollTopButton);
-        
-        // Initialize it after adding to DOM
-        initScrollToTop();
-    }
+    initStickyNav();
+    addScrollTopButton();
 });
 
 // Handle project card hover animations more smoothly
@@ -242,15 +276,4 @@ document.querySelectorAll('.skill-tags span').forEach(tag => {
         tag.style.transform = 'translateY(0)';
         tag.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.05)';
     });
-});
-
-// Sticky navigation on scroll
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    
-    if (window.scrollY > window.innerHeight) {
-        nav.classList.add('sticky');
-    } else {
-        nav.classList.remove('sticky');
-    }
 });
