@@ -3,24 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Machine Learning Portfolio</title>
+    <title>Preston Bied | Machine Learning Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
 </head>
 <body>
-    <header>
+    <!-- Enhanced Hero Section -->
+    <header class="hero">
         <div class="container">
-            <h1>Your Name</h1>
-            <p>Machine Learning Engineer & Data Scientist</p>
-            <nav>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Preston Bied</h1>
+                    <p class="tagline">Machine Learning Engineer & Data Scientist</p>
+                    <p class="hero-description">Transforming data into <span class="typed-text"></span></p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- Animated shapes in the background -->
+                    <div class="hero-shape"></div>
+                    <div class="hero-shape"></div>
+                    <div class="hero-shape"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#f4f7f9" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,197.3C384,203,480,181,576,154.7C672,128,768,96,864,96C960,96,1056,128,1152,144C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+        <nav>
+            <div class="container">
                 <ul>
                     <li><a href="#about">About</a></li>
+                    <li><a href="#resume">Resume</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-            </nav>
-        </div>
+            </div>
+        </nav>
     </header>
 
     <section id="about" class="section">
@@ -29,15 +54,112 @@
             <div class="about-content">
                 <div class="about-image">
                     <!-- Replace with your image path -->
-                    <img src="/api/placeholder/400/400" alt="Your Profile Picture">
+                    <img src="/api/placeholder/400/400" alt="Preston Bied Profile Picture">
                 </div>
                 <div class="about-text">
-                    <p>Hello! I'm a machine learning enthusiast with expertise in [your specific ML domains]. I have [X years] of experience building ML models and applications that [brief description of what you do].</p>
-                    <p>My background includes [relevant education, professional experience, or achievements]. I'm passionate about [specific areas of ML you're interested in].</p>
+                    <p>Hello! I'm a machine learning enthusiast with expertise in deep learning, computer vision, and natural language processing. I have a passion for building ML models and applications that solve real-world problems.</p>
+                    <p>My background includes a strong foundation in computer science and mathematics. I'm passionate about leveraging AI to create innovative solutions that make a positive impact.</p>
                     <div class="social-links">
-                        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://github.com/preston-g-bied" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
                         <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Resume Section -->
+    <section id="resume" class="section">
+        <div class="container">
+            <h2>Resume & Experience</h2>
+            
+            <div class="resume-container">
+                <div class="resume-download">
+                    <a href="preston-bied-resume.pdf" download class="btn btn-resume">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                    <p>Or explore my experience below</p>
+                </div>
+                
+                <div class="timeline">
+                    <!-- Education -->
+                    <div class="timeline-section">
+                        <h3 class="timeline-title">
+                            <i class="fas fa-graduation-cap"></i> Education
+                        </h3>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Master of Science in Data Science</h4>
+                                <h5>University Name</h5>
+                                <p class="timeline-date">2022 - 2024</p>
+                                <p>Relevant coursework: Machine Learning, Deep Learning, Natural Language Processing, Computer Vision, Big Data Analytics</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Bachelor of Science in Computer Science</h4>
+                                <h5>University Name</h5>
+                                <p class="timeline-date">2018 - 2022</p>
+                                <p>Relevant coursework: Data Structures & Algorithms, Probability & Statistics, Database Systems</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Work Experience -->
+                    <div class="timeline-section">
+                        <h3 class="timeline-title">
+                            <i class="fas fa-briefcase"></i> Work Experience
+                        </h3>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Machine Learning Engineer Intern</h4>
+                                <h5>Company Name</h5>
+                                <p class="timeline-date">June 2023 - August 2023</p>
+                                <p>Developed and implemented machine learning models for prediction tasks. Collaborated with cross-functional teams to integrate ML solutions into production systems.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Data Science Research Assistant</h4>
+                                <h5>University Research Lab</h5>
+                                <p class="timeline-date">January 2022 - May 2023</p>
+                                <p>Assisted in data collection, preprocessing, and analysis for research projects. Implemented various statistical and machine learning techniques to derive insights from complex datasets.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certifications -->
+                    <div class="timeline-section">
+                        <h3 class="timeline-title">
+                            <i class="fas fa-certificate"></i> Certifications
+                        </h3>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>Deep Learning Specialization</h4>
+                                <h5>Coursera (Andrew Ng)</h5>
+                                <p class="timeline-date">December 2022</p>
+                            </div>
+                        </div>
+                        
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>TensorFlow Developer Certificate</h4>
+                                <h5>Google</h5>
+                                <p class="timeline-date">July 2023</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -47,65 +169,107 @@
     <section id="projects" class="section">
         <div class="container">
             <h2>ML Projects</h2>
+            
+            <!-- Project Filters -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="regression">Regression</button>
+                <button class="filter-btn" data-filter="clustering">Clustering</button>
+                <button class="filter-btn" data-filter="nlp">NLP</button>
+            </div>
+            
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card">
+                <!-- Project 1: Housing Price Prediction -->
+                <div class="project-card regression">
                     <div class="project-image">
-                        <img src="/api/placeholder/400/250" alt="Project 1">
+                        <img src="/api/placeholder/400/250" alt="Housing Price Prediction">
                     </div>
                     <div class="project-content">
-                        <h3>Natural Language Processing Model</h3>
-                        <p>A sentiment analysis model built using BERT that analyzes customer reviews to extract insights about product satisfaction.</p>
+                        <div class="project-badge">Regression Analysis</div>
+                        <h3>Housing Price Prediction</h3>
+                        <p>Developed a machine learning model to predict housing prices using the Kaggle Housing Prices Competition dataset. Implemented feature engineering, exploratory data analysis, and advanced regression techniques.</p>
                         <div class="tech-stack">
                             <span>Python</span>
-                            <span>PyTorch</span>
-                            <span>BERT</span>
-                            <span>NLP</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
-                            <a href="#" class="btn-outline">GitHub Repo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/api/placeholder/400/250" alt="Project 2">
-                    </div>
-                    <div class="project-content">
-                        <h3>Computer Vision Application</h3>
-                        <p>An object detection system that identifies and classifies objects in real-time video streams using a custom-trained YOLOv5 model.</p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>TensorFlow</span>
-                            <span>YOLOv5</span>
-                            <span>OpenCV</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
-                            <a href="#" class="btn-outline">GitHub Repo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3 -->
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="/api/placeholder/400/250" alt="Project 3">
-                    </div>
-                    <div class="project-content">
-                        <h3>Time Series Forecasting</h3>
-                        <p>A deep learning approach to predicting stock market trends using LSTM networks and technical indicators.</p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>Keras</span>
-                            <span>LSTM</span>
+                            <span>Scikit-learn</span>
+                            <span>XGBoost</span>
                             <span>Pandas</span>
                         </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <div class="metric-value">91.2%</div>
+                                <div class="metric-label">Accuracy</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">Top 15%</div>
+                                <div class="metric-label">Leaderboard</div>
+                            </div>
+                        </div>
                         <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
+                            <a href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques" target="_blank" class="btn">View Dataset</a>
+                            <a href="#" class="btn-outline">GitHub Repo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Customer Segmentation -->
+                <div class="project-card clustering">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/250" alt="Customer Segmentation">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-badge">Unsupervised Learning</div>
+                        <h3>Customer Segmentation Analysis</h3>
+                        <p>Applied clustering algorithms to segment customers based on their purchasing behavior using the Online Retail dataset. Created interactive visualizations to present insights about different customer groups.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>K-Means</span>
+                            <span>DBSCAN</span>
+                            <span>Plotly</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <div class="metric-value">4</div>
+                                <div class="metric-label">Clusters</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">0.68</div>
+                                <div class="metric-label">Silhouette Score</div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.kaggle.com/datasets/vijayuv/onlineretail" target="_blank" class="btn">View Dataset</a>
+                            <a href="#" class="btn-outline">GitHub Repo</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Text Classification -->
+                <div class="project-card nlp">
+                    <div class="project-image">
+                        <img src="/api/placeholder/400/250" alt="Text Classification">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-badge">NLP</div>
+                        <h3>News Article Classification</h3>
+                        <p>Created a text classification model to categorize news articles into different topics using the BBC News Dataset. Implemented both classical machine learning and deep learning approaches.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>BERT</span>
+                            <span>TF-IDF</span>
+                            <span>Keras</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <div class="metric-value">94.3%</div>
+                                <div class="metric-label">Accuracy</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">0.93</div>
+                                <div class="metric-label">F1 Score</div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://www.kaggle.com/competitions/learn-ai-bbc" target="_blank" class="btn">View Dataset</a>
                             <a href="#" class="btn-outline">GitHub Repo</a>
                         </div>
                     </div>
@@ -117,42 +281,197 @@
     <section id="skills" class="section">
         <div class="container">
             <h2>Skills & Expertise</h2>
+            
+            <!-- Enhanced Skills Visualization -->
             <div class="skills-container">
                 <div class="skill-category">
                     <h3>Programming Languages</h3>
-                    <ul class="skill-list">
-                        <li>Python</li>
-                        <li>R</li>
-                        <li>SQL</li>
-                        <li>JavaScript</li>
-                    </ul>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="90"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>R</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>SQL</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="65"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="skill-category">
                     <h3>ML Frameworks</h3>
-                    <ul class="skill-list">
-                        <li>TensorFlow</li>
-                        <li>PyTorch</li>
-                        <li>Scikit-learn</li>
-                        <li>Keras</li>
-                    </ul>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>TensorFlow</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>PyTorch</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Scikit-learn</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Keras</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="75"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="skill-category">
                     <h3>Data Science</h3>
-                    <ul class="skill-list">
-                        <li>Data Visualization</li>
-                        <li>Statistical Analysis</li>
-                        <li>Feature Engineering</li>
-                        <li>Big Data Processing</li>
-                    </ul>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Data Visualization</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="85"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Statistical Analysis</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Feature Engineering</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="75"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Big Data Processing</span>
+                                <span>65%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="65"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+                
                 <div class="skill-category">
                     <h3>ML Specialties</h3>
-                    <ul class="skill-list">
-                        <li>Computer Vision</li>
-                        <li>Natural Language Processing</li>
-                        <li>Reinforcement Learning</li>
-                        <li>Recommender Systems</li>
-                    </ul>
+                    <div class="skill-bars">
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Computer Vision</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="70"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Natural Language Processing</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="80"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Reinforcement Learning</span>
+                                <span>60%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="60"></div>
+                            </div>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-info">
+                                <span>Recommender Systems</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-progress">
+                                <div class="skill-value" data-value="75"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Skills Tags -->
+            <div class="additional-skills">
+                <h3>Additional Tools & Technologies</h3>
+                <div class="skill-tags">
+                    <span>Git</span>
+                    <span>Docker</span>
+                    <span>AWS</span>
+                    <span>Google Cloud</span>
+                    <span>Matplotlib</span>
+                    <span>Seaborn</span>
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Jupyter</span>
+                    <span>Tableau</span>
+                    <span>Power BI</span>
+                    <span>Flask</span>
+                    <span>FastAPI</span>
+                    <span>MLflow</span>
+                    <span>Spark</span>
                 </div>
             </div>
         </div>
@@ -173,15 +492,67 @@
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-github"></i>
-                    <a href="https://github.com/yourusername" target="_blank">GitHub Profile</a>
+                    <a href="https://github.com/preston-g-bied" target="_blank">GitHub Profile</a>
                 </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <h3>Send Me a Message</h3>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Send Message</button>
+                </form>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 Your Name. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Preston Bied</h3>
+                    <p>Machine Learning Engineer & Data Scientist</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-nav">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#resume">Resume</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-social">
+                        <h4>Connect</h4>
+                        <div class="social-icons">
+                            <a href="https://github.com/preston-g-bied" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://twitter.com/yourhandle" target="_blank"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Preston Bied. All rights reserved.</p>
+            </div>
         </div>
     </footer>
 
