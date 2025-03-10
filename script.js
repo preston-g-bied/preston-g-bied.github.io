@@ -106,7 +106,7 @@ function initTypeEffect() {
                     'intelligent solutions',
                     'actionable insights',
                     'predictive models',
-                    'innovative applications'
+                    'innovative apps' // Shortened from "applications" to avoid cutoff
                 ],
                 typeSpeed: 50,
                 backSpeed: 30,

@@ -115,16 +115,19 @@ img {
 .hero-description {
     font-size: 1.2rem !important;
     margin-bottom: 30px !important;
-    overflow: visible !important; 
-    white-space: normal !important;
+    overflow: visible !important;
+    white-space: normal !important; /* Changed from nowrap to normal */
     min-height: 40px !important;
     position: relative;
+    width: 100% !important; /* Ensure full width */
+    max-width: 600px !important; /* Provide enough space for text */
 }
 
 .typed-text {
     display: inline-block !important;
-    min-width: 240px !important;
+    min-width: 280px !important; /* Increased from 240px to 280px */
     position: relative;
+    overflow: visible !important;
 }
 
 .typed-cursor {
@@ -204,15 +207,15 @@ img {
 /* First section doesn't need negative margin without navbar */
 #about.section {
     margin-top: -40px;
-    padding-top: 80px;
+    padding-top: 20px; /* Reduced from 80px to 20px */
     position: relative;
     z-index: 5;
 }
 
 #about.section h2 {
-    margin-top: 30px;  
+    margin-top: 0; /* Changed from 30px to 0 */
     position: relative;
-    z-index: 6; 
+    z-index: 6;
 }
 
 /* Make section titles more compact */
