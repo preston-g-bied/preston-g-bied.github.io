@@ -1,3 +1,43 @@
+/* Hero-specific button classes to avoid conflicts */
+.hero-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 150px;
+    margin-bottom: 10px;
+}
+
+.hero-btn-primary {
+    background-color: white;
+    color: #4a6fff;
+}
+
+.hero-btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
+    color: #4a6fff;
+}
+
+.hero-btn-outline {
+    border: 2px solid white;
+    color: white;
+}
+
+.hero-btn-outline:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: translateY(-3px);
+    color: white;
+}
+
+/* Ensure hero content is always visible */
+.hero-content {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 /* Base styles */
 :root {
     --primary-color: #4a6fff;
@@ -84,49 +124,6 @@ img {
     animation: fadeInUp 0.8s ease forwards;
 }
 
-.hero .btn-primary {
-    background-color: white;
-    color: var(--primary-color);
-    padding: 12px 28px;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: var(--transition);
-    text-align: center;
-    min-width: 150px;
-    margin-bottom: 10px;
-}
-
-/* Make the hero button styling more specific */
-.hero .btn-outline {
-    border: 2px solid white;
-    color: white;
-    padding: 12px 28px;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: var(--transition);
-    text-align: center;
-    min-width: 150px;
-    margin-bottom: 10px;
-}
-
-.hero .btn-primary:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    transform: translateY(-3px);
-}
-
-.hero .btn-outline:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-    color: white;
-}
-
-.hero .hero-cta {
-    display: flex;
-    gap: 15px;
-    animation: fadeInUp 0.8s 0.4s ease forwards;
-    flex-wrap: wrap;
-}
-
 .tagline {
     font-size: 1.5rem;
     margin-bottom: 15px;
@@ -154,37 +151,6 @@ img {
     gap: 15px;
     animation: fadeInUp 0.8s 0.4s ease forwards;
     flex-wrap: wrap;
-}
-
-.btn-primary, .btn-outline {
-    padding: 12px 28px;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: var(--transition);
-    text-align: center;
-    min-width: 150px;
-    margin-bottom: 10px;
-}
-
-.btn-primary {
-    background-color: white;
-    color: var(--primary-color);
-}
-
-.btn-primary:hover {
-    background-color: rgba(255, 255, 255, 0.9);
-    transform: translateY(-3px);
-}
-
-.btn-outline {
-    border: 2px solid white;
-    color: white;
-}
-
-.btn-outline:hover {
-    background-color: rgba(255, 255, 255, 0.15);
-    transform: translateY(-3px);
-    color: white;
 }
 
 .hero-visual {
@@ -245,7 +211,7 @@ nav {
     bottom: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
     transition: all 0.3s ease;
 }
 
@@ -271,14 +237,14 @@ nav ul li a.active {
 
 /* Sticky navigation */
 nav.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(74, 111, 255, 0.95);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    background-color: rgba(74, 111, 255, 0.95) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
     animation: slideDown 0.3s forwards;
-    z-index: 1000;
+    z-index: 9999 !important;
 }
 
 @keyframes slideDown {
