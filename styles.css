@@ -186,11 +186,11 @@ img {
 
 .hero-wave {
     position: absolute;
-    bottom: 0;
+    bottom: -1px;  
     left: 0;
     width: 100%;
     line-height: 0;
-    z-index: 50;
+    z-index: 4;  
 }
 
 /* Section styles */
@@ -203,10 +203,16 @@ img {
 
 /* First section doesn't need negative margin without navbar */
 #about.section {
-    margin-top: 0;
-    padding-top: 60px;
+    margin-top: -40px;
+    padding-top: 80px;
     position: relative;
     z-index: 5;
+}
+
+#about.section h2 {
+    margin-top: 30px;  
+    position: relative;
+    z-index: 6; 
 }
 
 /* Make section titles more compact */
