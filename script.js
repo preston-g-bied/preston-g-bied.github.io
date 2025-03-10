@@ -97,7 +97,9 @@ function initAnimations() {
 
 // Typed.js effect for hero section
 function initTypeEffect() {
-    if (document.querySelector('.typed-text')) {
+    const typedElement = document.querySelector('.typed-text');
+    
+    if (typedElement) {
         try {
             new Typed('.typed-text', {
                 strings: [
@@ -110,13 +112,9 @@ function initTypeEffect() {
                 backSpeed: 30,
                 backDelay: 2000,
                 loop: true,
-                onStringTyped: function() {
-                    // Force height recalculation to prevent layout issues
-                    const heroDesc = document.querySelector('.hero-description');
-                    if (heroDesc) {
-                        heroDesc.style.minHeight = '30px';
-                    }
-                }
+                showCursor: true,
+                cursorChar: '|',
+                autoInsertCss: true
             });
         } catch (error) {
             console.error("Error initializing Typed.js:", error);

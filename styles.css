@@ -113,18 +113,27 @@ img {
 }
 
 .hero-description {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    animation: fadeInUp 0.8s 0.3s ease forwards;
-    max-width: 100%;
-    overflow: visible;
-    white-space: nowrap;
-    min-height: 30px;
+    font-size: 1.2rem !important;
+    margin-bottom: 30px !important;
+    overflow: visible !important; 
+    white-space: normal !important;
+    min-height: 40px !important;
+    position: relative;
 }
 
 .typed-text {
-    display: inline-block;
-    min-width: 240px;
+    display: inline-block !important;
+    min-width: 240px !important;
+    position: relative;
+}
+
+.typed-cursor {
+    display: inline-block !important;
+    opacity: 1;
+    animation: blink 0.7s infinite;
+    position: relative;
+    margin-left: 2px;
+    color: white;
 }
 
 .hero-cta {
