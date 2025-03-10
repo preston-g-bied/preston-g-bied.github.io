@@ -1,64 +1,105 @@
-// Smooth scrolling for links (simplified - no navbar)
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        const targetId = this.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        
-        if (targetElement) {
-            window.scrollTo({
-                top: targetElement.offsetTop, 
-                behavior: 'smooth'
-            });
-        }
-    });
+// Initialize all functions once DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    // Add smooth scrolling for all anchor links
+    initSmoothScrolling();
+    
+    // Initialize animations for all elements
+    initAnimations();
+    
+    // Initialize typed.js effect for hero text
+    initTypeEffect();
+    
+    // Initialize project filtering functionality
+    initProjectFilters();
+    
+    // Initialize scroll-to-top button
+    initScrollToTop();
+    
+    // Initialize contact form validation
+    initContactForm();
+    
+    // Add hover effects 
+    initHoverEffects();
 });
 
-// Animation for elements coming into view
-const animateOnScroll = () => {
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    const observer = new IntersectionObserver((entries) => {
+// Smooth scrolling for links
+function initSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Animations
+function initAnimations() {
+    // Set up animation for elements coming into view
+    const elementsToAnimate = [
+        '.project-card',
+        '.skill-category',
+        '.timeline-item',
+        '.contact-item'
+    ];
+    
+    // Add animation class to elements
+    elementsToAnimate.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.classList.add('animate-on-scroll');
+        });
+    });
+    
+    // Set up intersection observer for animations
+    const animateOnScroll = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
+                animateOnScroll.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1 });
 
-    elements.forEach(element => {
-        observer.observe(element);
+    // Observe all elements with the animation class
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        animateOnScroll.observe(element);
     });
-};
-
-// Animation for skill bars
-const animateSkillBars = () => {
-    const skillBars = document.querySelectorAll('.skill-bar');
     
-    const observer = new IntersectionObserver((entries) => {
+    // Animate skill bars when they come into view
+    const skillObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const valueBar = entry.target.querySelector('.skill-value');
                 if (valueBar) {
                     const dataValue = valueBar.getAttribute('data-value');
-                    valueBar.style.width = dataValue + '%';
+                    setTimeout(() => {
+                        valueBar.style.width = dataValue + '%';
+                    }, 100);
                 }
-                observer.unobserve(entry.target);
+                skillObserver.unobserve(entry.target);
             }
         });
     }, { threshold: 0.5 });
     
-    skillBars.forEach(bar => {
-        observer.observe(bar);
+    // Observe all skill bars
+    document.querySelectorAll('.skill-bar').forEach(bar => {
+        skillObserver.observe(bar);
     });
-};
+}
 
 // Typed.js effect for hero section
-const initTypeEffect = () => {
+function initTypeEffect() {
     if (document.querySelector('.typed-text')) {
         try {
-            const typed = new Typed('.typed-text', {
+            new Typed('.typed-text', {
                 strings: [
                     'intelligent solutions',
                     'actionable insights',
@@ -81,10 +122,10 @@ const initTypeEffect = () => {
             console.error("Error initializing Typed.js:", error);
         }
     }
-};
+}
 
 // Project filtering functionality
-const initProjectFilters = () => {
+function initProjectFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card');
     
@@ -126,10 +167,10 @@ const initProjectFilters = () => {
             });
         });
     });
-};
+}
 
 // Scroll to top button functionality
-const initScrollToTop = () => {
+function initScrollToTop() {
     const scrollTopBtn = document.querySelector('.scroll-top-btn');
     
     if (scrollTopBtn) {
@@ -148,10 +189,10 @@ const initScrollToTop = () => {
             });
         });
     }
-};
+}
 
 // Contact form handling
-const initContactForm = () => {
+function initContactForm() {
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
@@ -166,8 +207,10 @@ const initContactForm = () => {
                 if (!input.value.trim()) {
                     valid = false;
                     input.classList.add('error');
+                    input.style.borderColor = '#dc3545';
                 } else {
                     input.classList.remove('error');
+                    input.style.borderColor = '#e0e0e0';
                 }
             });
             
@@ -180,74 +223,63 @@ const initContactForm = () => {
                 alert('Please fill in all fields.');
             }
         });
-    }
-};
-
-// Error handling wrapper
-const safeExecute = (fn, name) => {
-    try {
-        fn();
-    } catch (error) {
-        console.error(`Error in ${name}:`, error);
-    }
-};
-
-// Initialize all functions when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    try {
-        // Add 'animate-on-scroll' class to elements you want to animate
-        const elementsToAnimate = [
-            '.project-card',
-            '.skill-category',
-            '.timeline-item',
-            '.contact-item'
-        ];
         
-        elementsToAnimate.forEach(selector => {
-            document.querySelectorAll(selector).forEach(el => {
-                el.classList.add('animate-on-scroll');
-            });
-        });
-        
-        // Initialize animations and interactive elements with error handling
-        safeExecute(animateOnScroll, 'animateOnScroll');
-        safeExecute(animateSkillBars, 'animateSkillBars');
-        safeExecute(initTypeEffect, 'initTypeEffect');
-        safeExecute(initProjectFilters, 'initProjectFilters');
-        safeExecute(initScrollToTop, 'initScrollToTop');
-        safeExecute(initContactForm, 'initContactForm');
-        // Removed initStickyNav since there's no navbar anymore
-        
-        // Handle project card hover animations more smoothly
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                const image = card.querySelector('.project-image img');
-                if (image) {
-                    image.style.transform = 'scale(1.1)';
-                }
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                const image = card.querySelector('.project-image img');
-                if (image) {
-                    image.style.transform = 'scale(1)';
+        // Clear error styling on input
+        contactForm.querySelectorAll('input, textarea').forEach(input => {
+            input.addEventListener('input', () => {
+                if (input.value.trim()) {
+                    input.classList.remove('error');
+                    input.style.borderColor = '#e0e0e0';
                 }
             });
         });
-        
-        // Handle skill tag hover effect
-        document.querySelectorAll('.skill-tags span').forEach(tag => {
-            tag.addEventListener('mouseenter', () => {
-                tag.style.transform = 'translateY(-3px)';
-                tag.style.boxShadow = '0 5px 15px rgba(74, 111, 255, 0.2)';
-            });
-            
-            tag.addEventListener('mouseleave', () => {
-                tag.style.transform = 'translateY(0)';
-                tag.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.05)';
-            });
-        });
-    } catch (error) {
-        console.error("Error in initialization:", error);
     }
-});
+}
+
+// Add hover effects for various elements
+function initHoverEffects() {
+    // Project card image hover effect
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            const image = card.querySelector('.project-image img');
+            if (image) {
+                image.style.transform = 'scale(1.05)';
+            }
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            const image = card.querySelector('.project-image img');
+            if (image) {
+                image.style.transform = 'scale(1)';
+            }
+        });
+    });
+    
+    // Skill tag hover effect
+    document.querySelectorAll('.skill-tags span').forEach(tag => {
+        tag.addEventListener('mouseenter', () => {
+            tag.style.transform = 'translateY(-3px)';
+            tag.style.boxShadow = '0 5px 15px rgba(74, 111, 255, 0.2)';
+        });
+        
+        tag.addEventListener('mouseleave', () => {
+            tag.style.transform = 'translateY(0)';
+            tag.style.boxShadow = '0 3px 10px rgba(0, 0, 0, 0.05)';
+        });
+    });
+    
+    // Tech stack tag hover effect
+    document.querySelectorAll('.tech-stack span').forEach(tag => {
+        tag.addEventListener('mouseenter', () => {
+            tag.style.backgroundColor = '#4a6fff';
+            tag.style.color = 'white';
+            tag.style.transform = 'translateY(-2px)';
+        });
+        
+        tag.addEventListener('mouseleave', () => {
+            tag.style.backgroundColor = '#f0f4ff';
+            tag.style.color = '#4a6fff';
+            tag.style.transform = 'translateY(0)';
+        });
+    });
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preston Bied | Machine Learning Portfolio</title>
-    <link rel="stylesheet" href="styles.css?v=1.4">
+    <link rel="stylesheet" href="styles.css?v=1.5">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <style>
@@ -40,7 +40,7 @@
         }
         
         #about.section {
-            margin-top: 0 !important; /* Remove negative margin without navbar */
+            margin-top: 0 !important;
             padding-top: 40px !important;
             position: relative;
             z-index: 5;
@@ -91,10 +91,68 @@
             background-color: rgba(255, 255, 255, 0.9);
             transform: translateY(-3px);
         }
+        
+        /* Fix for project cards */
+        .project-card {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+        }
+        
+        /* Fix for skill bars */
+        .skill-progress {
+            height: 8px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 8px;
+        }
+        
+        .skill-value {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(to right, #4a6fff, #6a11cb);
+            border-radius: 10px;
+            transition: width 1s ease-in-out;
+        }
+        
+        /* Fix for contact form */
+        .contact-form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+        }
+        
+        .btn-submit {
+            background-color: #4a6fff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body>
-    <!-- Simplified Hero Section (Without Nav and Contact Button) -->
+    <!-- Simplified Hero Section -->
     <header class="hero">
         <div class="container">
             <div class="hero-content">
@@ -104,7 +162,6 @@
                     <p class="hero-description">Transforming data into <span class="typed-text"></span></p>
                     <div class="hero-cta">
                         <a href="#projects" class="hero-btn">View My Work</a>
-                        <!-- Contact Me button removed -->
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -120,7 +177,6 @@
                 <path fill="#f4f7f9" fill-opacity="1" d="M0,128L48,144C96,160,192,192,288,197.3C384,203,480,181,576,154.7C672,128,768,96,864,96C960,96,1056,128,1152,144C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
             </svg>
         </div>
-        <!-- Navigation removed -->
     </header>
 
     <section id="about" class="section">
@@ -338,8 +394,6 @@
                     </div>
                 </div>
                 
-                <!-- More skill categories... -->
-                
                 <div class="skill-category">
                     <h3>ML Frameworks</h3>
                     <div class="skill-bars">
@@ -382,7 +436,6 @@
                     </div>
                 </div>
                 
-                <!-- Other skill categories remain unchanged -->
                 <div class="skill-category">
                     <h3>Data Science</h3>
                     <div class="skill-bars">
@@ -531,7 +584,7 @@
                         <label for="message">Message</label>
                         <textarea id="message" name="message" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-submit">Send Message</button>
+                    <button type="submit" class="btn-submit">Send Message</button>
                 </form>
             </div>
         </div>
@@ -576,6 +629,6 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="script.js?v=1.4"></script>
+    <script src="script.js?v=1.5"></script>
 </body>
 </html>
