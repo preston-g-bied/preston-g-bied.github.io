@@ -60,7 +60,7 @@ img {
     overflow: visible;
     height: auto;
     max-height: 650px;
-    z-index: 1;
+    z-index: 10;
 }
 
 .hero-content {
@@ -69,7 +69,7 @@ img {
     justify-content: space-between;
     gap: 40px;
     position: relative;
-    z-index: 5;
+    z-index: 15;
 }
 
 .hero-text {
@@ -84,16 +84,47 @@ img {
     animation: fadeInUp 0.8s ease forwards;
 }
 
+.hero .btn-primary {
+    background-color: white;
+    color: var(--primary-color);
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: var(--transition);
+    text-align: center;
+    min-width: 150px;
+    margin-bottom: 10px;
+}
+
 /* Make the hero button styling more specific */
 .hero .btn-outline {
     border: 2px solid white;
     color: white;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: var(--transition);
+    text-align: center;
+    min-width: 150px;
+    margin-bottom: 10px;
+}
+
+.hero .btn-primary:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+    transform: translateY(-3px);
 }
 
 .hero .btn-outline:hover {
     background-color: rgba(255, 255, 255, 0.15);
     transform: translateY(-3px);
     color: white;
+}
+
+.hero .hero-cta {
+    display: flex;
+    gap: 15px;
+    animation: fadeInUp 0.8s 0.4s ease forwards;
+    flex-wrap: wrap;
 }
 
 .tagline {
@@ -203,8 +234,7 @@ img {
     left: 0;
     width: 100%;
     line-height: 0;
-    z-index: 3;
-    overflow: hidden;
+    z-index: 50;
 }
 
 /* Navigation */
@@ -213,8 +243,10 @@ nav {
     backdrop-filter: blur(10px);
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 100;
+    transition: all 0.3s ease;
 }
 
 nav ul {
@@ -241,10 +273,12 @@ nav ul li a.active {
 nav.sticky {
     position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
     background-color: rgba(74, 111, 255, 0.95);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     animation: slideDown 0.3s forwards;
-    z-index: 1000; /* Ensure it's above everything */
+    z-index: 1000;
 }
 
 @keyframes slideDown {
@@ -260,8 +294,7 @@ nav.sticky {
 .section {
     position: relative;
     padding: 50px 0;
-    z-index: 2;
-    background-color: #f4f7f9;
+    z-index: 5;
 }
 
 /* Add a negative margin to the first section to reduce space after hero */

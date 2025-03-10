@@ -211,27 +211,54 @@ const initContactForm = () => {
 const initStickyNav = () => {
     const nav = document.querySelector('nav');
     const hero = document.querySelector('.hero');
+    const heroContent = document.querySelector('.hero-content');
     
     if (nav && hero) {
-        // Create a placeholder element
-        const navPlaceholder = document.createElement('div');
-        navPlaceholder.style.display = 'none';
-        navPlaceholder.style.height = nav.offsetHeight + 'px';
-        nav.parentNode.insertBefore(navPlaceholder, nav.nextSibling);
-        
-        const heroBottom = hero.offsetTop + hero.offsetHeight;
+        // Store original nav position for reference
+        const navOriginalPosition = nav.offsetTop;
         
         window.addEventListener('scroll', () => {
-            if (window.scrollY >= heroBottom - nav.offsetHeight) {
-                nav.classList.add('sticky');
-                navPlaceholder.style.display = 'block';
+            const heroBottom = hero.offsetTop + hero.offsetHeight - nav.offsetHeight;
+            
+            if (window.scrollY > heroBottom) {
+                // Make nav sticky only when scrolled past hero
+                if (!nav.classList.contains('sticky')) {
+                    nav.classList.add('sticky');
+                    document.body.style.paddingTop = nav.offsetHeight + 'px';
+                }
             } else {
+                // Return nav to original position in hero
                 nav.classList.remove('sticky');
-                navPlaceholder.style.display = 'none';
+                document.body.style.paddingTop = '0';
+            }
+            
+            // Ensure hero content stays visible when scrolling back up
+            if (window.scrollY < hero.offsetHeight) {
+                heroContent.style.opacity = '1';
+                heroContent.style.visibility = 'visible';
             }
         });
     }
 };
+
+document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        const nav = document.querySelector('nav');
+        
+        if (targetElement) {
+            const navHeight = nav.classList.contains('sticky') ? nav.offsetHeight : 0;
+            
+            window.scrollTo({
+                top: targetElement.offsetTop - navHeight, 
+                behavior: 'smooth'
+            });
+        }
+    });
+});
 
 // Error handling wrapper
 const safeExecute = (fn, name) => {
