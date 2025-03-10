@@ -1,43 +1,16 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+// Smooth scrolling for links (simplified - no navbar)
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
         e.preventDefault();
         
         const targetId = this.getAttribute('href');
         const targetElement = document.querySelector(targetId);
-        const nav = document.querySelector('nav');
         
         if (targetElement) {
-            const navHeight = nav.classList.contains('sticky') ? nav.offsetHeight : 0;
-            
             window.scrollTo({
-                top: targetElement.offsetTop - navHeight, 
+                top: targetElement.offsetTop, 
                 behavior: 'smooth'
             });
-        }
-    });
-});
-
-// Add active class to navigation links based on scroll position
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('nav ul li a');
-    
-    let currentSection = '';
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100;
-        const sectionHeight = section.clientHeight;
-        
-        if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
         }
     });
 });
@@ -210,39 +183,6 @@ const initContactForm = () => {
     }
 };
 
-// Sticky navigation on scroll
-const initStickyNav = () => {
-    const nav = document.querySelector('nav');
-    const hero = document.querySelector('.hero');
-    
-    if (!nav || !hero) return;
-    
-    // Create a spacer element to prevent content jumps
-    const navSpacer = document.createElement('div');
-    navSpacer.style.display = 'none';
-    navSpacer.style.height = nav.offsetHeight + 'px';
-    document.body.insertBefore(navSpacer, document.body.firstChild);
-    
-    // Calculate hero bottom position once
-    const heroBottom = hero.offsetHeight;
-    
-    const handleScroll = () => {
-        if (window.scrollY > heroBottom - nav.offsetHeight) {
-            nav.classList.add('sticky');
-            navSpacer.style.display = 'block';
-        } else {
-            nav.classList.remove('sticky');
-            navSpacer.style.display = 'none';
-        }
-    };
-    
-    // Initial check
-    handleScroll();
-    
-    // Add scroll listener
-    window.addEventListener('scroll', handleScroll);
-};
-
 // Error handling wrapper
 const safeExecute = (fn, name) => {
     try {
@@ -276,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         safeExecute(initProjectFilters, 'initProjectFilters');
         safeExecute(initScrollToTop, 'initScrollToTop');
         safeExecute(initContactForm, 'initContactForm');
-        safeExecute(initStickyNav, 'initStickyNav');
+        // Removed initStickyNav since there's no navbar anymore
         
         // Handle project card hover animations more smoothly
         document.querySelectorAll('.project-card').forEach(card => {
