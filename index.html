@@ -250,10 +250,42 @@
                 <button class="filter-btn active" data-filter="all">All Projects</button>
                 <button class="filter-btn" data-filter="regression">Regression</button>
                 <button class="filter-btn" data-filter="clustering">Clustering</button>
-                <button class="filter-btn" data-filter="nlp">NLP</button>
+                <button class="filter-btn" data-filter="recommendation">Recommendation System</button>
             </div>
             
             <div class="projects-grid">
+                <!-- Project 3: Text Classification -->
+                <div class="project-card recommendation">
+                    <div class="project-image">
+                        <img src="assets/books.jpeg" alt="Text Classification">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-badge">NLP</div>
+                        <h3>GoodReads Book Recommender</h3>
+                        <p>Work in Progress: Developed a personalized book recommendation system using GoodReads data. Implemented multiple filtering techniques including collaborative filtering, content-based filtering, and matrix factorization. Created an interactive web interface for users to discover new books based on their preferences.                        </p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>SVG</span>
+                            <span>TF-IDF</span>
+                            <span>Flask</span>
+                        </div>
+                        <div class="project-metrics">
+                            <div class="metric">
+                                <div class="metric-value">--</div>
+                                <div class="metric-label">Accuracy</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">---</div>
+                                <div class="metric-label">RMSE</div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/zygmuntz/goodbooks-10k" target="_blank" class="btn">View Dataset</a>
+                            <a href="https://github.com/preston-g-bied/goodreads-book-recommender" class="btn-outline">GitHub Repo</a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Project 1: Housing Price Prediction -->
                 <div class="project-card regression">
                     <div class="project-image">
@@ -314,38 +346,6 @@
                         <div class="project-links">
                             <a href="https://www.kaggle.com/datasets/vijayuv/onlineretail" target="_blank" class="btn">View Dataset</a>
                             <a href="https://github.com/preston-g-bied/customer-segmentation-analysis" class="btn-outline">GitHub Repo</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Project 3: Text Classification -->
-                <div class="project-card nlp">
-                    <div class="project-image">
-                        <img src="assets/news.webp" alt="Text Classification">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-badge">NLP</div>
-                        <h3>News Article Classification</h3>
-                        <p>Created a text classification model to categorize news articles into different topics using the BBC News Dataset. Implemented both classical machine learning and deep learning approaches.</p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>BERT</span>
-                            <span>TF-IDF</span>
-                            <span>Keras</span>
-                        </div>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <div class="metric-value">94.3%</div>
-                                <div class="metric-label">Accuracy</div>
-                            </div>
-                            <div class="metric">
-                                <div class="metric-value">0.93</div>
-                                <div class="metric-label">F1 Score</div>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://www.kaggle.com/competitions/learn-ai-bbc" target="_blank" class="btn">View Dataset</a>
-                            <a href="#" class="btn-outline">GitHub Repo</a>
                         </div>
                     </div>
                 </div>
