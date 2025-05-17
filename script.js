@@ -20,6 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Add hover effects 
     initHoverEffects();
+
+    enhancedSmoothScrolling();
+    enhancedAnimations();
+    highlightActiveSection();
 });
 
 // Smooth scrolling for links
@@ -278,6 +282,98 @@ function initHoverEffects() {
             tag.style.backgroundColor = '#f0f4ff';
             tag.style.color = '#4a6fff';
             tag.style.transform = 'translateY(0)';
+        });
+    });
+}
+
+// Enhanced scroll animation
+function enhancedSmoothScrolling() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                // Add offset for better positioning (adjust as needed)
+                const offset = 80;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - offset;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Enhanced animations with intersection observer
+function enhancedAnimations() {
+    // Different animation styles for different elements
+    const animationStyles = {
+        '.project-card': { delay: 100, duration: 800, distance: '40px' },
+        '.skill-category': { delay: 100, duration: 800, distance: '30px' },
+        '.timeline-item': { delay: 150, duration: 800, distance: '30px' },
+        '.contact-item': { delay: 100, duration: 600, distance: '20px' }
+    };
+    
+    // Set up animation for elements coming into view with better timing
+    Object.entries(animationStyles).forEach(([selector, style]) => {
+        const elements = document.querySelectorAll(selector);
+        
+        elements.forEach((el, index) => {
+            el.classList.add('animate-on-scroll');
+            el.style.transitionDuration = `${style.duration}ms`;
+            el.style.transitionDelay = `${index * style.delay}ms`;
+            el.style.transform = `translateY(${style.distance})`;
+        });
+    });
+    
+    // Enhanced observer with better thresholds
+    const animateOnScroll = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                entry.target.style.transform = 'translateY(0)';
+                animateOnScroll.unobserve(entry.target);
+            }
+        });
+    }, { 
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    // Observe all elements with the animation class
+    document.querySelectorAll('.animate-on-scroll').forEach(element => {
+        animateOnScroll.observe(element);
+    });
+}
+
+// Function to highlight the active section in navigation
+function highlightActiveSection() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.footer-nav a');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPosition = window.pageYOffset;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active-link');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active-link');
+            }
         });
     });
 }

@@ -1015,6 +1015,109 @@ footer {
     transform: translateY(0);
 }
 
+/* Improved hero section */
+.hero {
+    height: 85vh;
+    min-height: 500px;
+    max-height: 700px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    padding-top: 30px;
+}
+
+.hero h1 {
+    font-size: 4.5rem;
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+
+/* Add subtle hover effect to profile picture */
+.about-image img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(74, 111, 255, 0.15);
+}
+
+/* Enhance project cards */
+.project-card {
+    border: none;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 15px 30px rgba(74, 111, 255, 0.15);
+}
+
+.project-content {
+    padding: 25px;
+}
+
+/* Enhance timeline items */
+.timeline-content {
+    border-radius: 16px;
+    transition: all 0.4s ease;
+}
+
+.timeline-content:hover {
+    transform: translateY(-8px) translateX(5px);
+}
+
+/* Improve filter buttons */
+.filter-btn {
+    font-weight: 600;
+    padding: 10px 24px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, #4a6fff 0%, #6a11cb 100%);
+    box-shadow: 0 5px 15px rgba(74, 111, 255, 0.25);
+}
+
+/* Improve skill bars */
+.skill-progress {
+    height: 10px;
+    margin-top: 8px;
+    border-radius: 20px;
+}
+
+.skill-value {
+    border-radius: 20px;
+    background: linear-gradient(90deg, #4a6fff, #6a11cb);
+    transition: width 1.2s cubic-bezier(0.1, 0.5, 0.2, 1);
+}
+
+/* Enhance footer */
+.footer-content {
+    padding-bottom: 30px;
+}
+
+/* Loading animation for skill bars */
+@keyframes skillBarLoad {
+    from { width: 0; }
+    to { width: var(--final-width); }
+}
+
+/* Subtle animation for the hero section */
+@keyframes heroFadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-text {
+    animation: heroFadeIn 1s ease forwards;
+}
+
 @keyframes float {
     0% {
         transform: translateY(0) rotate(0deg);
