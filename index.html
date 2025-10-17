@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Preston Bied | Machine Learning Engineer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -521,6 +522,219 @@
             transform: translateY(-2px);
         }
 
+        /* Reading Section */
+        .currently-reading {
+            margin-bottom: 4rem;
+        }
+
+        .currently-reading-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .current-book {
+            text-align: center;
+        }
+
+        .current-book-cover {
+            width: 100%;
+            max-width: 200px;
+            height: 300px;
+            background: var(--bg-primary);
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            padding: 1rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .current-book h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .current-book p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .reading-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 2.5rem 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .search-box i {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-secondary);
+        }
+
+        .reading-filters {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .book-card {
+            background: var(--bg-primary);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .book-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 250px;
+            background: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .book-info {
+            padding: 1rem;
+        }
+
+        .book-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .book-info .author {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .book-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+            color: #f59e0b;
+        }
+
+        .book-status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-top: 0.5rem;
+        }
+
+        .status-read {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-currently-reading {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .status-to-read {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .reading-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .stat-card .stat-number {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-card .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-secondary);
+        }
+
         /* Contact */
         .contact-content {
             max-width: 600px;
@@ -707,6 +921,7 @@
                     <li><a href="#experience">Experience</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
+                    <li><a href="#reading">Reading</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 <div class="mobile-menu" id="mobileMenu">
@@ -956,74 +1171,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Sentiment Analysis -->
-                <!--
-                <div class="project-card nlp">
-                    <div class="project-image">
-                        <img src="assets/reddit.webp" alt="Reddit Sentiment Analysis">
-                        <span class="project-badge">NLP</span>
-                    </div>
-                    <div class="project-content">
-                        <h3>Reddit Sentiment Analysis Dashboard</h3>
-                        <p>Developed an interactive dashboard for analyzing sentiment trends in social media posts with real-time filtering and visualization features.</p>
-                        <div class="tech-stack">
-                            <span>Plotly</span>
-                            <span>NLTK/VADER</span>
-                            <span>Streamlit</span>
-                            <span>Pandas</span>
-                        </div>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <span class="metric-value">75%</span>
-                                <span class="metric-label">Accuracy</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">10K+</span>
-                                <span class="metric-label">Posts Processed</span>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques" target="_blank" class="btn btn-primary">View Dataset</a>
-                            <a href="https://github.com/preston-g-bied/sentiment_dashboard" target="_blank" class="btn btn-secondary">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                -->
-
-                <!-- Customer Segmentation -->
-                <!--
-                <div class="project-card clustering">
-                    <div class="project-image">
-                        <img src="assets/customer-segmentation.webp" alt="Customer Segmentation">
-                        <span class="project-badge">Clustering</span>
-                    </div>
-                    <div class="project-content">
-                        <h3>Customer Segmentation Analysis</h3>
-                        <p>Applied clustering algorithms to segment customers based on purchasing behavior with interactive visualizations for business insights.</p>
-                        <div class="tech-stack">
-                            <span>Python</span>
-                            <span>K-Means</span>
-                            <span>Flask</span>
-                            <span>Plotly</span>
-                        </div>
-                        <div class="project-metrics">
-                            <div class="metric">
-                                <span class="metric-value">4</span>
-                                <span class="metric-label">Clusters</span>
-                            </div>
-                            <div class="metric">
-                                <span class="metric-value">0.54</span>
-                                <span class="metric-label">Silhouette Score</span>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://www.kaggle.com/datasets/vijayuv/onlineretail" target="_blank" class="btn btn-primary">View Dataset</a>
-                            <a href="https://github.com/preston-g-bied/customer-segmentation-analysis" target="_blank" class="btn btn-secondary">GitHub</a>
-                        </div>
-                    </div>
-                </div>
-                -->
             </div>
         </div>
     </section>
@@ -1174,6 +1321,77 @@
         </div>
     </section>
 
+    <!-- Reading Section -->
+    <section id="reading">
+        <div class="container">
+            <h2>Reading Journey</h2>
+            
+            <!-- Reading Stats -->
+            <div class="reading-stats">
+                <div class="stat-card">
+                    <span class="stat-number" id="totalBooksRead">0</span>
+                    <span class="stat-label">Books Read</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="currentlyReading">0</span>
+                    <span class="stat-label">Currently Reading</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="avgRating">0.0</span>
+                    <span class="stat-label">Average Rating</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" id="thisYearCount">0</span>
+                    <span class="stat-label">Books This Year</span>
+                </div>
+            </div>
+
+            <!-- Currently Reading -->
+            <div class="currently-reading">
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem; text-align: center; color: var(--primary);">
+                    <i class="fas fa-book-open" style="margin-right: 0.5rem;"></i> Currently Reading
+                </h3>
+                <div class="currently-reading-grid" id="currentlyReadingGrid">
+                    <div class="current-book">
+                        <div class="current-book-cover">Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Book Library -->
+            <div>
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem; text-align: center; color: var(--primary);">
+                    <i class="fas fa-book" style="margin-right: 0.5rem;"></i> Book Library
+                </h3>
+                
+                <!-- Controls -->
+                <div class="reading-controls">
+                    <div class="search-box">
+                        <input type="text" id="bookSearch" placeholder="Search books by title or author...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="reading-filters">
+                        <button class="filter-btn active" data-filter="all">All Books</button>
+                        <button class="filter-btn" data-filter="read">Read</button>
+                        <button class="filter-btn" data-filter="to-read">To Read</button>
+                        <button class="filter-btn" data-filter="5-star">5 Stars</button>
+                    </div>
+                </div>
+
+                <!-- Books Grid -->
+                <div class="books-grid" id="booksGrid">
+                    <div class="book-card">
+                        <div class="book-cover">Loading books...</div>
+                    </div>
+                </div>
+                <div class="no-results" id="noResults" style="display: none;">
+                    <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                    <p>No books found matching your criteria.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
@@ -1280,7 +1498,7 @@
         });
 
         // Project filtering
-        const filterBtns = document.querySelectorAll('.filter-btn');
+        const filterBtns = document.querySelectorAll('.project-filters .filter-btn');
         const projectCards = document.querySelectorAll('.project-card');
         
         filterBtns.forEach(btn => {
@@ -1344,6 +1562,172 @@
         }
         
         typeEffect();
+
+        // Reading Section - Load and Display Books
+        let allBooks = [];
+        let filteredBooks = [];
+
+        async function loadBooks() {
+            try {
+                const response = await window.fs.readFile('df9b78554abba07d9e61de17bd240e87b4e04b7183b099718f697fa1fd23fa23.csv', { encoding: 'utf8' });
+                
+                // Parse CSV using PapaParse
+                const parsed = Papa.parse(response, {
+                    header: true,
+                    dynamicTyping: true,
+                    skipEmptyLines: true
+                });
+
+                allBooks = parsed.data.map(book => ({
+                    title: (book.Title || '').trim(),
+                    author: (book.Authors || 'Unknown Author').trim(),
+                    status: (book['Read Status'] || '').trim(),
+                    rating: book['Star Rating'],
+                    dateAdded: book['Date Added'],
+                    lastRead: book['Last Date Read'],
+                    format: book.Format,
+                    tags: book.Tags
+                })).filter(book => book.title); // Filter out empty entries
+
+                filteredBooks = [...allBooks];
+                displayBooks();
+                updateStats();
+                displayCurrentlyReading();
+            } catch (error) {
+                console.error('Error loading books:', error);
+                document.getElementById('booksGrid').innerHTML = 
+                    '<div class="book-card"><div class="book-cover">Error loading books. Please make sure the CSV file is uploaded.</div></div>';
+            }
+        }
+
+        function displayCurrentlyReading() {
+            const currentBooks = allBooks.filter(book => 
+                book.status === 'currently-reading'
+            );
+
+            const grid = document.getElementById('currentlyReadingGrid');
+            
+            if (currentBooks.length === 0) {
+                grid.innerHTML = '<div class="current-book"><div class="current-book-cover">No books currently reading</div></div>';
+                return;
+            }
+
+            grid.innerHTML = currentBooks.map(book => `
+                <div class="current-book">
+                    <div class="current-book-cover">
+                        <i class="fas fa-book" style="font-size: 3rem; opacity: 0.3;"></i>
+                    </div>
+                    <h4>${book.title}</h4>
+                    <p>${book.author}</p>
+                </div>
+            `).join('');
+        }
+
+        function displayBooks() {
+            const grid = document.getElementById('booksGrid');
+            const noResults = document.getElementById('noResults');
+
+            if (filteredBooks.length === 0) {
+                grid.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            grid.style.display = 'grid';
+            noResults.style.display = 'none';
+
+            grid.innerHTML = filteredBooks.map(book => {
+                const statusClass = book.status === 'read' ? 'status-read' : 
+                                  book.status === 'currently-reading' ? 'status-currently-reading' : 
+                                  'status-to-read';
+                
+                const statusText = book.status === 'read' ? 'Read' : 
+                                 book.status === 'currently-reading' ? 'Reading' : 
+                                 'To Read';
+
+                const stars = book.rating ? 
+                    '<div class="book-rating">' + 
+                    '★'.repeat(Math.floor(book.rating)) + 
+                    (book.rating % 1 !== 0 ? '½' : '') +
+                    '</div>' : '';
+
+                return `
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <i class="fas fa-book" style="font-size: 2rem; opacity: 0.3;"></i>
+                        </div>
+                        <div class="book-info">
+                            <h4>${book.title}</h4>
+                            <p class="author">${book.author}</p>
+                            ${stars}
+                            <span class="book-status ${statusClass}">${statusText}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateStats() {
+            const readBooks = allBooks.filter(b => b.status === 'read');
+            const currentlyReading = allBooks.filter(b => b.status === 'currently-reading');
+            const ratedBooks = readBooks.filter(b => b.rating > 0);
+            const avgRating = ratedBooks.length > 0 
+                ? (ratedBooks.reduce((sum, b) => sum + b.rating, 0) / ratedBooks.length).toFixed(1)
+                : '0.0';
+            
+            const currentYear = new Date().getFullYear();
+            const thisYearBooks = allBooks.filter(b => {
+                if (!b.lastRead && !b.dateAdded) return false;
+                const dateStr = b.lastRead || b.dateAdded;
+                return dateStr && dateStr.includes(currentYear.toString());
+            });
+
+            document.getElementById('totalBooksRead').textContent = readBooks.length;
+            document.getElementById('currentlyReading').textContent = currentlyReading.length;
+            document.getElementById('avgRating').textContent = avgRating;
+            document.getElementById('thisYearCount').textContent = thisYearBooks.length;
+        }
+
+        // Search functionality
+        const bookSearch = document.getElementById('bookSearch');
+        if (bookSearch) {
+            bookSearch.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase();
+                filteredBooks = allBooks.filter(book => 
+                    book.title.toLowerCase().includes(searchTerm) ||
+                    book.author.toLowerCase().includes(searchTerm)
+                );
+                displayBooks();
+            });
+        }
+
+        // Filter functionality for reading section
+        const readingFilterBtns = document.querySelectorAll('.reading-filters .filter-btn');
+        readingFilterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                readingFilterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+                
+                if (filter === 'all') {
+                    filteredBooks = [...allBooks];
+                } else if (filter === 'read') {
+                    filteredBooks = allBooks.filter(b => b.status === 'read');
+                } else if (filter === 'to-read') {
+                    filteredBooks = allBooks.filter(b => b.status === 'to-read');
+                } else if (filter === '5-star') {
+                    filteredBooks = allBooks.filter(b => b.rating === 5);
+                }
+
+                // Reset search
+                if (bookSearch) bookSearch.value = '';
+                displayBooks();
+            });
+        });
+
+        // Load books on page load
+        loadBooks();
 
         // Animate skill bars on scroll
         const observerOptions = {
