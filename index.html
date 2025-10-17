@@ -555,9 +555,10 @@
         }
 
         .currently-reading-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            display: flex;
+            justify-content: center;
             gap: 2rem;
+            flex-wrap: wrap;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -1320,6 +1321,38 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <div class="contact-content">
+                <p class="contact-intro">
+                    I'm currently open to new opportunities in the machine learning field. 
+                    Whether you have a project in mind or just want to chat about AI, I'd love to hear from you.
+                </p>
+                <div class="contact-methods">
+                    <a href="mailto:pgbied@gmail.com" class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        pgbied@gmail.com
+                    </a>
+                    <a href="https://www.linkedin.com/in/preston-bied-35313a302/" target="_blank" class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        LinkedIn Profile
+                    </a>
+                    <a href="https://github.com/preston-g-bied" target="_blank" class="contact-item">
+                        <i class="fab fa-github"></i>
+                        GitHub Profile
+                    </a>
+                </div>
+                <div style="margin-top: 2rem;">
+                    <a href="assets/preston-bied-resume-oct-2025.pdf" download class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Reading Section -->
     <section id="reading">
         <div class="container">
@@ -1428,38 +1461,6 @@
 
                     <!-- To add more favorite books, copy one of the blocks above -->
                     
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Let's Connect</h2>
-            <div class="contact-content">
-                <p class="contact-intro">
-                    I'm currently open to new opportunities in the machine learning field. 
-                    Whether you have a project in mind or just want to chat about AI, I'd love to hear from you.
-                </p>
-                <div class="contact-methods">
-                    <a href="mailto:pgbied@gmail.com" class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        pgbied@gmail.com
-                    </a>
-                    <a href="https://www.linkedin.com/in/preston-bied-35313a302/" target="_blank" class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        LinkedIn Profile
-                    </a>
-                    <a href="https://github.com/preston-g-bied" target="_blank" class="contact-item">
-                        <i class="fab fa-github"></i>
-                        GitHub Profile
-                    </a>
-                </div>
-                <div style="margin-top: 2rem;">
-                    <a href="assets/preston-bied-resume-oct-2025.pdf" download class="btn btn-primary">
-                        <i class="fas fa-download"></i> Download Resume
-                    </a>
                 </div>
             </div>
         </div>
