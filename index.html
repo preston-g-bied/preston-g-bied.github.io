@@ -1569,7 +1569,7 @@
 
         async function loadBooks() {
             try {
-                const response = await window.fs.readFile('df9b78554abba07d9e61de17bd240e87b4e04b7183b099718f697fa1fd23fa23.csv', { encoding: 'utf8' });
+                const response = await window.fs.readFile('books.csv', { encoding: 'utf8' });
                 
                 // Parse CSV using PapaParse
                 const parsed = Papa.parse(response, {
