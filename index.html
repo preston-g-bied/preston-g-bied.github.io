@@ -1569,10 +1569,17 @@
 
         async function loadBooks() {
             try {
-                const response = await window.fs.readFile('books.csv', { encoding: 'utf8' });
+                // Fetch the CSV file from the same directory
+                const response = await fetch('books.csv');
+                
+                if (!response.ok) {
+                    throw new Error('Could not load books.csv');
+                }
+                
+                const csvText = await response.text();
                 
                 // Parse CSV using PapaParse
-                const parsed = Papa.parse(response, {
+                const parsed = Papa.parse(csvText, {
                     header: true,
                     dynamicTyping: true,
                     skipEmptyLines: true
@@ -1596,7 +1603,7 @@
             } catch (error) {
                 console.error('Error loading books:', error);
                 document.getElementById('booksGrid').innerHTML = 
-                    '<div class="book-card"><div class="book-cover">Error loading books. Please make sure the CSV file is uploaded.</div></div>';
+                    '<div class="book-card"><div class="book-cover">Error loading books.csv. Make sure the file is in the same folder as index.html and you\'re viewing the site through a web server (not file://).</div></div>';
             }
         }
 
