@@ -908,6 +908,227 @@
                 text-align: center;
             }
         }
+
+        /* Section Subtitle */
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* AI/ML Specializations */
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .specialization-card {
+            background: var(--bg-primary);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialization-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .specialization-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary);
+        }
+
+        .specialization-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .specialization-card h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .specialization-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Technical Skills Categories */
+        .skills-section {
+            margin-bottom: 3rem;
+        }
+
+        .skills-section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .skills-section-header i {
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .skills-section-header h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .skill-category-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.25rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            border: 1.5px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: default;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--primary);
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .skill-tag.proficient {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(16, 185, 129, 0.1));
+            border-color: var(--primary);
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Proficiency Legend */
+        .proficiency-legend {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 1rem;
+            background: var(--bg-primary);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .legend-badge {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .legend-badge.proficient {
+            background: var(--primary);
+        }
+
+        .legend-badge.experienced {
+            background: var(--border);
+        }
+
+        /* Certifications Section */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .cert-card {
+            background: var(--bg-primary);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.2s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .cert-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .cert-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-primary);
+        }
+
+        .cert-info p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Mobile responsiveness for new skills section */
+        @media (max-width: 768px) {
+            .specializations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .proficiency-legend {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1177,149 +1398,190 @@
 
     <!-- Skills Section -->
     <section id="skills">
-        <div class="container">
-            <h2>Technical Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Python</span>
-                            <span class="skill-level">90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">C++</span>
-                            <span class="skill-level">75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">SQL</span>
-                            <span class="skill-level">85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">JavaScript</span>
-                            <span class="skill-level">65%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 65%"></div>
-                        </div>
-                    </div>
-                </div>
+    <div class="container">
+        <h2>Technical Expertise</h2>
+        <p class="section-subtitle">Specialized in building end-to-end machine learning solutions</p>
 
-                <div class="skill-category">
-                    <h3>ML Frameworks</h3>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Scikit-learn</span>
-                            <span class="skill-level">85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Keras</span>
-                            <span class="skill-level">80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">PyTorch</span>
-                            <span class="skill-level">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 70%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">TensorFlow</span>
-                            <span class="skill-level">70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 70%"></div>
-                        </div>
-                    </div>
+        <!-- AI/ML Specializations -->
+        <div class="specializations-grid">
+            <div class="specialization-card">
+                <div class="specialization-icon">
+                    <i class="fas fa-eye"></i>
                 </div>
-
-                <div class="skill-category">
-                    <h3>Data Science</h3>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Data Visualization</span>
-                            <span class="skill-level">85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Statistical Analysis</span>
-                            <span class="skill-level">80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Feature Engineering</span>
-                            <span class="skill-level">80%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 80%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <span class="skill-name">Big Data Processing</span>
-                            <span class="skill-level">75%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 75%"></div>
-                        </div>
-                    </div>
-                </div>
+                <h3>Computer Vision</h3>
+                <p>Real-time emotion detection, image classification, object detection, and attention-based models with Grad-CAM visualization</p>
             </div>
 
-            <div class="additional-skills">
-                <h3 style="text-align: center; margin-bottom: 2rem;">Additional Tools & Technologies</h3>
-                <div class="skill-tags">
-                    <span>Git</span>
-                    <span>Docker</span>
-                    <span>AWS</span>
-                    <span>Matplotlib</span>
-                    <span>Seaborn</span>
-                    <span>Pandas</span>
-                    <span>NumPy</span>
-                    <span>Jupyter</span>
-                    <span>Flask</span>
-                    <span>FastAPI</span>
-                    <span>MLflow</span>
-                    <span>Spark</span>
+            <div class="specialization-card">
+                <div class="specialization-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Natural Language Processing</h3>
+                <p>Text classification, keyword extraction, transformer models, and patent analysis systems</p>
+            </div>
+
+            <div class="specialization-card">
+                <div class="specialization-icon">
+                    <i class="fas fa-waveform"></i>
+                </div>
+                <h3>Audio Processing</h3>
+                <p>Acoustic monitoring, species identification, audio augmentation, and spectrogram analysis</p>
+            </div>
+
+            <div class="specialization-card">
+                <div class="specialization-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Predictive Modeling</h3>
+                <p>Regression analysis, ensemble methods, feature engineering, and time series forecasting</p>
+            </div>
+        </div>
+
+        <!-- Proficiency Legend -->
+        <div class="proficiency-legend">
+            <div class="legend-item">
+                <div class="legend-badge proficient"></div>
+                <span>Proficient (Production Experience)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-badge experienced"></div>
+                <span>Experienced (Project Work)</span>
+            </div>
+        </div>
+
+        <!-- Deep Learning & ML Frameworks -->
+        <div class="skills-section">
+            <div class="skills-section-header">
+                <i class="fas fa-cube"></i>
+                <h3>Deep Learning & ML Frameworks</h3>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Core Frameworks</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag proficient">PyTorch</span>
+                        <span class="skill-tag proficient">TensorFlow</span>
+                        <span class="skill-tag proficient">Keras</span>
+                        <span class="skill-tag proficient">Scikit-learn</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Advanced Libraries</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag proficient">Hugging Face Transformers</span>
+                        <span class="skill-tag proficient">OpenCV</span>
+                        <span class="skill-tag">Librosa</span>
+                        <span class="skill-tag">Audiomentations</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Boosting & Ensemble</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag proficient">XGBoost</span>
+                        <span class="skill-tag">LightGBM</span>
+                        <span class="skill-tag">CatBoost</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Programming & Development -->
+        <div class="skills-section">
+            <div class="skills-section-header">
+                <i class="fas fa-code"></i>
+                <h3>Programming & Development</h3>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Languages</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag proficient">Python</span>
+                        <span class="skill-tag proficient">SQL</span>
+                        <span class="skill-tag">C++</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Data Science Stack</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag proficient">Pandas</span>
+                        <span class="skill-tag proficient">NumPy</span>
+                        <span class="skill-tag proficient">Matplotlib</span>
+                        <span class="skill-tag proficient">Seaborn</span>
+                        <span class="skill-tag">Plotly</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MLOps & Deployment -->
+        <div class="skills-section">
+            <div class="skills-section-header">
+                <i class="fas fa-rocket"></i>
+                <h3>MLOps & Deployment</h3>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Experiment Tracking</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag proficient">Weights & Biases</span>
+                        <span class="skill-tag">MLflow</span>
+                        <span class="skill-tag">TensorBoard</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Deployment & APIs</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag proficient">Flask</span>
+                        <span class="skill-tag">FastAPI</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">ONNX</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Infrastructure</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag proficient">Git</span>
+                        <span class="skill-tag proficient">Jupyter</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Model Optimization -->
+        <div class="skills-section">
+            <div class="skills-section-header">
+                <i class="fas fa-sliders-h"></i>
+                <h3>Model Optimization & Tools</h3>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">Hyperparameter Tuning</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Optuna</span>
+                        <span class="skill-tag">Hyperopt</span>
+                        <span class="skill-tag">Ray Tune</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Model Interpretability</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Grad-CAM</span>
+                        <span class="skill-tag">SHAP</span>
+                        <span class="skill-tag">LIME</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">LLM Tools</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">LlamaIndex</span>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- Contact Section -->
     <section id="contact">
